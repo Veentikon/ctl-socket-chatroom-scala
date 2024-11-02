@@ -1,0 +1,55 @@
+This project was created as assignment for CMPT436 (U of S) class of Fall 2023.
+
+Description
+server.erl
+Upon start spawns a listener process that accepts incoming client connections and a shared resource
+manager process "rooms_manager" which manages common resource, namely list of chat_room
+records. Upon accepting a connection 2 more processes are spawned for each client, a listener that
+accepts raw messages/commands from the client, and via massage passing, sends them forward for
+further command processing to client_loop process, which then passes messages to the
+rooms_manager as required.
+client.erl
+Upon start spawns two processes, one listener that is listening for messages from the server and prints
+them to console, and another, client process that accepts user input and sends it to the server.
+Usage
+Dockerdile, docker-compose.yml
+All 10 client containers, and the server, are uncommented, only have to replace the volumes.
+Compilation:
+Files: server.erl, client.erl
+First start erlang REPL, then compile both with c(server). And c(client).
+Execution
+Both, server and client modules have function start() the purpose of which is to start execution of the
+program. First start server by typing server:start(). Than in separate containers client:start(). for each
+client.
+Commands/ interface:
+Upon starting, the client prints out the message with the available commands and their purpose: create,
+join, leave, send and quit.
+Note, there are no symbols such as ": ", or "> " to indicate that the program is waiting for input, so just
+go ahead and type a command.
+Testing
+Minimum Viable Product:
+There was minimal testing done, no automated testing. Tested by starting multiple containers, called
+docker attach and ran the server and client programs. The functions described in the assignment
+description are implemented and working, with some limitations and features.
+Testing was mostly incremental, at each step of development tested each functionality for proper
+execution, and at the end of development tested more thoroughly, but still, not comprehensive testing.
+A3 Report
+Saturday, October 28, 2023 7:53 AM
+Results:
+The functions: create, join, leave and send perform the tasks they were intended to, with a few edge
+cases. Response times are reasonable and within the required parameter.
+Problems, "features" to be aware of:
+A client can send messages to a chat room without joining it first, only after joining can a client
+receive the messages from that room. Upon joining, client will receive all messages, each message
+will include the chat room name at the beginning to remove some confusion when subscribed to
+multiple rooms.
+•
+Problem terminating the server program, there is no proper mechanism for exiting some server
+processes, including listener process that listens for incoming client connections, this means,
+restarting erl REPL is required, or stopping the process by a command.
+•
+If a server is stopped, then clients exit, there are remaining processes that listen on sockets that
+prevent subsequent start of the application by blocking the sockets. In this case the simplest
+solution is to halt(). The erlang REPL and restart. There are some connection loss checking
+included that might help exit some processes, however it does not fully prevent this issue.
+•
