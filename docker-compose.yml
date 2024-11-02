@@ -1,0 +1,129 @@
+# CMPT346
+# Assignment 3
+# Vitalii Radzividlo
+# vir138
+# 11247071
+
+version: "3.9"
+services:
+  server: # this is the machine running the server program
+    build:
+      context: .
+      target: Server
+    container_name: server # name of the machine within the Docker network
+    ports:
+      - "80:8080" # 80 - physical port (local host), 8080 - port of the container machine
+    volumes:
+    - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\server:/usr/src/app
+    stdin_open: true
+    tty: true
+  client1:
+    build:
+      context: .
+      target: Client
+    container_name: client1
+    ports:
+      - "81:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client2:
+    build:
+      context: .
+      target: Client
+    container_name: client2
+    ports:
+      - "82:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client3:
+    build:
+      context: .
+      target: Client
+    container_name: client3
+    ports:
+      - "83:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client4:
+    build:
+      context: .
+      target: Client
+    container_name: client4
+    ports:
+      - "84:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client5:
+    build:
+      context: .
+      target: Client
+    container_name: client5
+    ports:
+      - "86:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client6:
+    build:
+      context: .
+      target: Client
+    container_name: client6
+    ports:
+      - "87:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client7:
+    build:
+      context: .
+      target: Client
+    container_name: client7
+    ports:
+      - "88:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client8:
+    build:
+      context: .
+      target: Client
+    container_name: client8
+    ports:
+      - "89:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client9:
+    build:
+      context: .
+      target: Client
+    container_name: client9
+    ports:
+      - "90:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
+  client10:
+    build:
+      context: .
+      target: Client
+    container_name: client10
+    ports:
+      - "91:8080"
+    volumes:
+      - C:\Users\radzi\OneDrive\Desktop\U of S\Fall 2023\CMPT 436\A3\client:/usr/src/app
+    stdin_open: true
+    tty: true
